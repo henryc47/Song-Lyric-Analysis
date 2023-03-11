@@ -76,7 +76,8 @@ def all_words_one_list(lyrics):
         all_words = all_words + words #add these to the list of all words
     return all_words
 
-#words per unique word, this is known in academia as T.T.R = Type-Token Ratio 
+#words per unique word, this is known in academia as T.T.R = Type-Token Ratio
+#also returns num words and num unique words 
 def words_per_unique_word(lyrics):
     lines = remove_new_line_characters(lyrics)
     lines = all_lower(lines)
@@ -85,7 +86,7 @@ def words_per_unique_word(lyrics):
     num_words = len(all_words)
     num_unique_words = len(word_frequency)
     words_per_unique_word = num_words/num_unique_words
-    return words_per_unique_word
+    return words_per_unique_word,num_words,num_unique_words
 
 
 def main():
@@ -98,8 +99,10 @@ def main():
     word_frequency = word_prevalence(all_words)
     print(word_frequency)
     """
-    uniqueness = words_per_unique_word(lyrics)
-    print(uniqueness,' words per unique word')
+    uniqueness,num_words,num_unique_words = words_per_unique_word(lyrics)
+    print(("{:.3f}".format(uniqueness)) ,' words per unique word')
+    print(num_words,' total words')
+    print(num_unique_words,' unique words')
 
 
 if __name__ == "__main__":
