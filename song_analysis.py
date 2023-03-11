@@ -58,6 +58,16 @@ def break_line_into_words(line):
         words.append(word)
     return words
 
+#produces a dictionary representing word prevalence, key is the word, data is the prevalence
+def word_prevalence(list_words):
+    word_prevalence = {}
+    for word in list_words:
+        if word in word_prevalence: #if word already in the dictionary
+            word_prevalence[word] = word_prevalence[word] + 1 #we have an extra instance of an already used word
+        else:
+            word_prevalence[word] = 1 #we have one instance of the new word
+    return word_prevalence
+
 #put all words into one list
 def all_words_one_list(lyrics):
     all_words = [] #list to store all words
@@ -71,7 +81,8 @@ def main():
     lines = remove_new_line_characters(lines)
     lines = all_lower(lines)
     all_words = all_words_one_list(lines)
-    print(all_words)
+    word_frequency = word_prevalence(all_words)
+    print(word_frequency)
 
 if __name__ == "__main__":
     main()
