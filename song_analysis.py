@@ -31,7 +31,7 @@ def remove_new_line_characters(lyrics):
             i = i + 1 #move onto the next line
     return lyrics #return the updated lyrics
 
-#converts all lines to lowercase at once
+#converts all lines to lowercase at once, this is useful so words with different upper/lowercase are not counted as seperate words
 def all_lower(lyrics):
     for i,line in enumerate(lyrics):
         lower_line = line.lower() #convert the string for each line to be lowercase
