@@ -31,6 +31,13 @@ def remove_new_line_characters(lyrics):
             i = i + 1 #move onto the next line
     return lyrics #return the updated lyrics
 
+#converts all lines to lowercase at once
+def all_lower(lyrics):
+    for i,line in enumerate(lyrics):
+        lower_line = line.lower() #convert the string for each line to be lowercase
+        lyrics[i] = lower_line #and store this lowercase line in the container for the lines
+    return lyrics
+
 #breaks a line into words
 def break_line_into_words(line):
     words = []
@@ -52,10 +59,11 @@ def break_line_into_words(line):
     return words
 
 
-
 def main():
     lines = read_lyrics(song_path)
     lines = remove_new_line_characters(lines)
+    lines = all_lower(lines)
+    print(lines)
     for line in lines:
         words = break_line_into_words(line)
         print(words)
