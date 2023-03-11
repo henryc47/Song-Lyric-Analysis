@@ -1,5 +1,5 @@
 #a series of lyrical analysis tools written in python to estimate song complexity
-song_path = "/Users/henry_chadban/Documents/Data/Song Lyrics/Midnight Oil/Place_Without_A_Postcode/Brave_Faces.txt"
+song_path = "/Users/henry_chadban/Documents/Data/Song Lyrics/Midnight Oil/Place_Without_A_Postcode/Brave_Faces_Bad.txt"
 
 #import the lyrics from a text file
 def read_lyrics(path):
@@ -45,7 +45,10 @@ def break_line_into_words(line):
         else:
             word = word+character #add the next character to the word
     #add the final word
-    words.append(word)
+    if len(word)==0:
+        pass
+    else:
+        words.append(word)
     return words
 
 
