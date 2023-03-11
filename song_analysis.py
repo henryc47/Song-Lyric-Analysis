@@ -31,10 +31,31 @@ def remove_new_line_characters(lyrics):
             i = i + 1 #move onto the next line
     return lyrics #return the updated lyrics
 
+#breaks a line into words
+def break_line_into_words(line):
+    words = []
+    word = ''
+    for i,character in enumerate(line): #go through all the characters in the line
+        if character==' ':
+            if len(word)==0: #catch the edge case that there are leading/trailing blanks
+                continue #and do nothing, we don't need to store empty words
+            else:
+                words.append(word)
+                word = '' #reset the word
+        else:
+            word = word+character #add the next character to the word
+    #add the final word
+    words.append(word)
+    return words
+
+
+
 def main():
     lines = read_lyrics(song_path)
     lines = remove_new_line_characters(lines)
-    print(lines)
+    for line in lines:
+        words = break_line_into_words(line)
+        print(words)
 
 if __name__ == "__main__":
     main()
