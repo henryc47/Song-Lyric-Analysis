@@ -58,15 +58,20 @@ def break_line_into_words(line):
         words.append(word)
     return words
 
+#put all words into one list
+def all_words_one_list(lyrics):
+    all_words = [] #list to store all words
+    for line in lyrics: #go through each line in the lyrics
+        words = break_line_into_words(line) #break each line into words
+        all_words = all_words + words #add these to the list of all words
+    return all_words
 
 def main():
     lines = read_lyrics(song_path)
     lines = remove_new_line_characters(lines)
     lines = all_lower(lines)
-    print(lines)
-    for line in lines:
-        words = break_line_into_words(line)
-        print(words)
+    all_words = all_words_one_list(lines)
+    print(all_words)
 
 if __name__ == "__main__":
     main()
